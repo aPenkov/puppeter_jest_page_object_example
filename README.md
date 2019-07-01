@@ -1,10 +1,21 @@
 # puppeter_jest_page_object_example
 
 
-Simple project with puppeteer and jest.
+Пример проекта для UI тестов, с использованием puppeteer и jest.
 
+Склонируйте данный репозиторий на свою машину и выполните в корне
+```
+npm i
+```
+Укажите в *BASE_URL* в файле ```shared/constants.js``` адрес на котором будете прогонять тесты 
+(*это может быть локально поднятый редактор*)
 
-Clone repository for your machine and use npm install.
-
-
-You need set BASE_URL in shred/constants
+В файле ```shared/BrowserSession.js``` Замените
+```
+headless: true
+```
+На
+```
+headless: false
+```
+Для того, что бы видеть прогон тестов визуально.
