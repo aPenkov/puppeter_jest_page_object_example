@@ -1,7 +1,8 @@
 module.exports = {
-  setupTestFrameworkScriptFile: './jest.setup.js'
-};
-
-module.exports = {
-  transform: {},
+  setupFilesAfterEnv: [
+    '<rootDir>/jest.setup.js',
+  ], 
+  transform: {
+    "^.+\\.jsx?$": "babel-jest",
+  },
 };

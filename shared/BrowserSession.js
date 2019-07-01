@@ -1,6 +1,5 @@
-const puppeteer = require( "puppeteer" ),
-  { WIDTH, HEIGHT} = require("./constants");
-
+import puppeteer from 'puppeteer';
+import { WIDTH, HEIGHT} from './constants';
 
 class BrowserSession {
 
@@ -9,7 +8,8 @@ class BrowserSession {
       {
         headless: false,
         slowMo: 40,
-        devtools: false
+        devtools: false,
+        args: ['--start-fullscreen'],
         }
     );
     this.page = await this.browser.newPage();
@@ -21,4 +21,30 @@ class BrowserSession {
   }
 }
 
-module.exports = new BrowserSession();
+export const bs = new BrowserSession();
+
+
+// export const initModule = async () => {
+//   let page = null;
+//   let browser = null;
+   
+//   const setup = async () => {
+//     browser = await puppeteer.launch({
+//       headless: false,
+//       slowMo: 100,
+//       devtools: false,
+//       args: ['--start-fullscreen'], 
+//     });
+//     page = await browser.newPage();
+//     await page.setViewport({ width: WIDTH, height: HEIGHT });
+//   }
+
+//   const teardown = async () => {    
+//     browser.close();
+//   }
+
+//   await setup();
+
+//   return { page, teardown };
+// }
+

@@ -1,3 +1,3 @@
-exports.BASE_URL = "";
-exports.WIDTH = 1360;
-exports.HEIGHT = 728;
+export const BASE_URL = "http://localhost:3000/?isOfflineMode&dontWaitForPdf";
+export const WIDTH = 1360;
+export const HEIGHT = 728;
