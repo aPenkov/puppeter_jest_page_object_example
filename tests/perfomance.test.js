@@ -10,7 +10,7 @@ afterAll(async () => {
   await bs.teardown();
 });
 
-describe("Open constructor", ()=> {
+describe("Perfomance", ()=> {
   it("User can open constructor", async () => {
     //console.log(bs)
     clickButtonOnRightSideBar(bs.page, 'ADD FILLABLE FIELDS');

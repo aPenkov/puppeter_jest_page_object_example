@@ -6,7 +6,7 @@ class BrowserSession {
   async setup() {
     this.browser = await puppeteer.launch(
       {
-        headless: ftrue,
+        headless: false,
         devtools: false,
         args: ['--start-fullscreen'],
         }
