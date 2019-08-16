@@ -8,7 +8,7 @@ class BrowserSession {
       {
         headless: false,
         devtools: false,
-        args: ['--start-fullscreen'],
+        // args: ['--start-fullscreen'],
         }
     );
     this.page = await this.browser.newPage();

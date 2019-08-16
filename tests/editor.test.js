@@ -1,19 +1,32 @@
 import { bs, consts } from '../shared';
-import { clickButtonOnRightSideBar, isConstructorOpen } from '../steps/constructorSteps'
+import {makeScreenshoot} from '../steps/utils'
+import { isConstructorOpen, clickSaveBtn } from '../steps/constructorSteps'
+import { openConstructor, isEditorOpen, clickFillOnline,
+   enterTextToActiveField, getTextFromField } from '../steps/editorSteps'
+
+const w9UrlPArametr = '454879723--w9-2018-2019-form-';
+const url = `${consts.BASE_URL}${w9UrlPArametr}`;
 
 beforeAll(async () => {
   await bs.setup();
-  await bs.page.goto(consts.BASE_URL, { waitUntil: "networkidle2" } );
+  bs.page.setCookie(consts.DESK);
 });
 
 afterAll(async () => {
   await bs.teardown();
 });
 
-describe("Open constructor", ()=> {
-  it("User can open constructor", async () => {
-    //console.log(bs)
-    clickButtonOnRightSideBar(bs.page, 'ADD FILLABLE FIELDS');
+describe("Fill field", () => {
+  it("User can fill field", async () => {
+    await bs.page.goto(url, { waitUntil: "networkidle2" } );
+    await clickFillOnline(bs.page);
+    expect(await isEditorOpen(bs.page)).toEqual(true);
+    await openConstructor(bs.page);
     expect(await isConstructorOpen(bs.page)).toEqual(true);
+    await clickSaveBtn(bs.page);
+    expect(await isEditorOpen(bs.page)).toEqual(true);
+    await enterTextToActiveField(bs.page, 'test');
+    await expect(await getTextFromField(bs.page,0)).toEqual('test')
+    await makeScreenshoot(bs.page);
   })
 })

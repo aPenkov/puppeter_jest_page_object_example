@@ -1,13 +1,13 @@
-import { getRightSidebarElement, getIsConstructorMode, waitConstructorOpen } from '../pages/EditorPage';
-
-export const clickButtonOnRightSideBar = async (page, element) => {
-  const button = await getRightSidebarElement(page, element);
-  await button.click();
-}
+import { getIsConstructorMode, waitConstructorOpen,getBtnSave } from '../pages/ConstructorPage';
 
 export const isConstructorOpen = async (page) => {
   await waitConstructorOpen(page);
   const isOpen = await getIsConstructorMode(page);
   return isOpen;
+}
+
+export const clickSaveBtn = async (page) => {
+  const button = await getBtnSave(page);
+  button.click();
 }
 

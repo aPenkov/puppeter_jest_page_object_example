@@ -1,14 +1,15 @@
 const puppeteer = require('puppeteer');
-const cookies;
+const { BASE_URL,COOKIES,PARAMS } = require('./shared/constants');
 
-const url;
+const DESK = 'jsfiller-desk02';
+const url = `${BASE_URL}${DESK}${PARAMS}`;
+const cookies = COOKIES;
 
 (async () => {
   const bs = await puppeteer.launch({headless:false});
   const page = await bs.newPage();
   await page.setCookie(...cookies);
   await page.goto(url,{waitUntil: 'networkidle2'});
-  await page.waitForXPath(`//ul[@class = 'collapsed-right-sidebar__list']//span[contains(text(), "ADD FILLABLE FIELDS")]`)
-
+  await page.waitForXPath("//button[.='ADD FILLABLE FIELDS']")
   await bs.close();
 })();
