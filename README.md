@@ -1,4 +1,4 @@
-# puppeter_jest_page_object_example
+# puppeter_jest_page_object_example test
 
 
 Пример проекта для UI тестов, с использованием puppeteer и jest, так же спроыстыми примерами в папке ``` simple-example```
